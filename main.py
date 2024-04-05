@@ -36,9 +36,9 @@ class Player(GameSprite):
 
     def update(self):
         keys = key.get_pressed()
-        if keys[K_a] and self.rect.y > 5:
+        if keys[K_s] and self.rect.y > 5:
             self.rect.y -= self.speed
-        if keys[K_d] and self.rect.y < WIDTH - 80:
+        if keys[K_w] and self.rect.y < WIDTH - 80:
             self.rect.y += self.speed
 
 class Player2(GameSprite):
@@ -47,9 +47,9 @@ class Player2(GameSprite):
 
     def update(self):
         keys = key.get_pressed()
-        if keys[K_a] and self.rect.y > 5:
+        if keys[K_s] and self.rect.y > 5:
             self.rect.y -= self.speed
-        if keys[K_d] and self.rect.y < WIDTH - 80:
+        if keys[K_w] and self.rect.y < WIDTH - 80:
             self.rect.y += self.speed
 
 color_sel = False
