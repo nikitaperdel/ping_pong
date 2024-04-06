@@ -31,21 +31,13 @@ class GameSprite(sprite.Sprite):
         window.blit(self.image, (self.rect.x , self.rect.y))
  
 class Player(GameSprite):
-    def __init__(self, p_image: str, x: int, y: int, h: int, w: int, speed: int):
-        super().__init__(p_image, x, y, h, w, speed)
- 
-    def update(self):
+    def update_l(self):
         keys = key.get_pressed()
         if keys[K_s] and self.rect.y > 5:
             self.rect.y -= self.speed
         if keys[K_w] and self.rect.y < WIDTH - 80:
             self.rect.y += self.speed
- 
-class Player2(GameSprite):
-    def __init__(self, p_image: str, x: int, y: int, h: int, w: int, speed: int):
-        super().__init__(p_image, x, y, h, w, speed)
- 
-    def update(self):
+    def update_r(self):
         keys = key.get_pressed()
         if keys[K_s] and self.rect.y > 5:
             self.rect.y -= self.speed
