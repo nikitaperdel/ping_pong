@@ -10,11 +10,8 @@ HEIGHT = 500
 FPS = 60
 WIN_SCORE = 10
 RESTART_TIME = 3000
- 
-def gencolor():
-    return (randint(0, 255), randint(0, 255), randint(0, 255))
- 
-background = gencolor()
+
+background = (randint(0, 255), randint(0, 255), randint(0, 255))
 window = display.set_mode((WIDTH, HEIGHT))
 display.set_caption("Pingpong2DEngine")
 clock = time.Clock()
@@ -44,13 +41,15 @@ class Player(GameSprite):
         if keys[K_w] and self.rect.y < WIDTH - 80:
             self.rect.y += self.speed
  
-color_sel = False
 Engine = True
+finish = False
  
 while Engine:
     window.fill(background)
     for e in event.get():
         if e.type == QUIT:
-            Engine = False  
+            Engine = False
+    if not finish:
+        window.fill(background)
     display.update()
     clock.tick(FPS)
