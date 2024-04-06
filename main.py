@@ -17,7 +17,6 @@ score2 = 0
 speed_x = 3
 speed_y = 3
 WIN_SCORE = 10
-RESTART_TIME = 3000
 
 background = (randint(0, 255), randint(0, 255), randint(0, 255))
 window = display.set_mode((WIDTH, HEIGHT))
@@ -38,9 +37,9 @@ class GameSprite(sprite.Sprite):
 class Player(GameSprite):
     def update_l(self):
         keys = key.get_pressed()
-        if keys[K_s] and self.rect.y > 5:
+        if keys[K_w] and self.rect.y > 5:
             self.rect.y -= self.speed
-        if keys[K_w] and self.rect.y < WIDTH - 200:
+        if keys[K_s] and self.rect.y < WIDTH - 200:
             self.rect.y += self.speed
     def update_r(self):
         keys = key.get_pressed()
@@ -70,18 +69,21 @@ while Engine:
         ball.rect.x += speed_x
         ball.rect.y += speed_y
     if sprite.collide_rect(racket1, ball) or sprite.collide_rect(racket2, ball):
-        speed_x += -1
-        speed_y += 1
+        offset = (ball.rect.y - racket1.rect.y) / (racket1.rect.height - ball.rect.height)
+        speed_y = 2 * offset - 1
+        speed_x *= -1
     if ball.rect.y > HEIGHT - 50 or ball.rect.y < 0:
         speed_y *= -1
     if ball.rect.x < 0:
         score2 += 1
         ball.rect.x = 200
         ball.rect.y = 200
+        speed_x = 3  # мяч будет лететь вправо
     if ball.rect.x > WIDTH:
         score1 += 1
         ball.rect.x = 200
         ball.rect.y = 200
+        speed_x = -3  # мяч будет лететь влево
     if score1 >= WIN_SCORE or score2 >= WIN_SCORE:
         finish = True
         if score1 > score2:
