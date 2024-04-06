@@ -45,7 +45,6 @@ Engine = True
 finish = False
  
 while Engine:
-    window.fill(background)
     for e in event.get():
         if e.type == QUIT:
             Engine = False
