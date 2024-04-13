@@ -68,12 +68,12 @@ while Engine:
         score2 += 1
         ball.rect.x = 200
         ball.rect.y = 200
-        speed_x = 3  # мяч будет лететь вправо
+        speed_x = 3
     if ball.rect.x > WIDTH:
         score1 += 1
         ball.rect.x = 200
         ball.rect.y = 200
-        speed_x = -3  # мяч будет лететь влево
+        speed_x = -3
     if score1 >= WIN_SCORE or score2 >= WIN_SCORE:
         if score1 > score2:
             window.blit(lose2, (200, 200))
